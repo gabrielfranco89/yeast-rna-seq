@@ -1,0 +1,11 @@
+*.fast*
+*.gz
+.Rproj.user
+*.Rproj
+results/alignments/*
+results/fastp_reports/*
+results/qc_reports/SRR*
+data/*
+tmp/*
+.DS_Store
+scripts/05_count.sh~

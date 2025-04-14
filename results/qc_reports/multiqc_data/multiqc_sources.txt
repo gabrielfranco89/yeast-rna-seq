@@ -1,0 +1,9 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SRR31781641_1	/pipeline/results/qc_reports/SRR31781641_1_fastqc.zip
+FastQC	all_sections	SRR31781640_1	/pipeline/results/qc_reports/SRR31781640_1_fastqc.zip
+FastQC	all_sections	SRR31781636_2	/pipeline/results/qc_reports/SRR31781636_2_fastqc.zip
+FastQC	all_sections	SRR31781635_1	/pipeline/results/qc_reports/SRR31781635_1_fastqc.zip
+FastQC	all_sections	SRR31781635_2	/pipeline/results/qc_reports/SRR31781635_2_fastqc.zip
+FastQC	all_sections	SRR31781636_1	/pipeline/results/qc_reports/SRR31781636_1_fastqc.zip
+FastQC	all_sections	SRR31781640_2	/pipeline/results/qc_reports/SRR31781640_2_fastqc.zip
+FastQC	all_sections	SRR31781641_2	/pipeline/results/qc_reports/SRR31781641_2_fastqc.zip
