@@ -3,11 +3,15 @@ library(ggplot2)
 library(ggrepel)
 
 # Define sample metadata
-mysamples = c("SRR31781635",
-             "SRR31781636",
-             "SRR31781640",
-             "SRR31781641")
-mygeno = rep(c("spn1", "WT"), each = 2)
+mysamples = c(
+  "SRR31781631",
+  "SRR31781632",
+  "SRR31781633",
+  "SRR31781635",
+  "SRR31781636",
+  "SRR31781640",
+  "SRR31781641")
+mygeno = rep(c("spt6_F249K","spn1_R263D", "WT"), c(3,2,2))
 
 sample_info <- data.frame(
   sample = mysamples,
@@ -16,7 +20,8 @@ sample_info <- data.frame(
 rownames(sample_info) <- sample_info$sample
 
 # Load counts
-counts <- read.table("results/counts/count_matrix.txt", header=TRUE, row.names=1, comment.char="#")
+counts <- read.table("results/counts/count_matrix.txt", header=TRUE, 
+                     row.names=1, comment.char="#")
 counts <- counts[, grepl(paste(sample_info$sample,collapse = "|"),
                                colnames(counts))]
 colnames(counts) <- mysamples
@@ -26,18 +31,18 @@ dds <- DESeqDataSetFromMatrix(countData = counts,
                               colData = sample_info,
                               design = ~ genotype)
 ## Remove low-expression genes
-remove_flag = FALSE
+remove_flag = TRUE
 if(remove_flag){
   dds <- dds[rowSums(counts(dds))>= 10, ]
 }
 
 dds <- DESeq(dds)
 
-res <- results(dds, contrast=c("genotype", "spn1", "WT"))
+res <- results(dds, contrast=c("genotype", "spt6_F249K", "WT"))
 write.csv(as.data.frame(res), file="results/counts/deseq2_results.csv")
 summary(res)
 res_sig <- res[which(res$padj < 0.05 & res$log2FoldChange< -1),]
-as_tibble(res_sig)
+as_tibble(res_sig, rownames="Gene")
 
 # Diagnostics
 plotDispEsts(dds)
@@ -87,7 +92,9 @@ genes_of_interest <- c(
     mutate(Significant = ifelse(padj < 0.05,
                                 "Significant",
                                 "NS"),
-           Label = ifelse(-log10(padj)> 50 | log2FoldChange>10 | Gene %in% genes_of_interest, 
+           Label = ifelse(-log10(padj)> 30 ,#| 
+                            # log2FoldChange>10 |
+                            # Gene %in% genes_of_interest, 
                           Gene,
                           NA)
     ) %>% 
@@ -95,8 +102,8 @@ genes_of_interest <- c(
                fill = Significant,
                label=Label)) +
     geom_point(alpha = .7, pch = 21, col = 'gray10') +
-    ggtitle("Volcano plot: spn1-R263D vs WT")+
-    geom_label_repel() +
+    ggtitle("Volcano plot: spt6-F249K vs WT")+
+    geom_label_repel(size = 3, min.segment.length = 0) +
     xlab(expression(Log[2]~Fold~Change)) +
     ylab(expression(-Log[10]~p-value)) +    
     scale_fill_viridis_d()
@@ -109,10 +116,8 @@ key_genes <- c(
   "RNR1"  # Cell cycle/replication
 )
 
-
-
 res %>% 
-  as_tibble(rownames = 'Gene') %>% 
+  as_tibble(rownames = 'Gene') %>%   
   mutate(Gene = str_to_upper(Gene)) %>% 
   filter(Gene %in% study_genes)
 
@@ -144,7 +149,7 @@ pheatmap(mat,
          annotation_col = ann,
          color = colorRampPalette(rev(brewer.pal(9, "RdBu")))(255),
          fontsize_row = 8,
-         main = "Top 30 Differentially Expressed Genes (spn1 vs WT)")
+         main = "Top 30 Differentially Expressed Genes")
 
 
 

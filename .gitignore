@@ -9,3 +9,6 @@ data/*
 tmp/*
 .DS_Store
 scripts/05_count.sh~
+GF*
+my-style*
+figures/

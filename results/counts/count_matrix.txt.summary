@@ -1,15 +1,15 @@
-Status	results/alignments/SRR31781635_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781636_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781640_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781641_Aligned.sortedByCoord.out.bam
-Assigned	26814806	38914274	3918129	10749388
-Unassigned_Unmapped	0	0	0	0
-Unassigned_Read_Type	0	0	0	0
-Unassigned_Singleton	0	0	0	0
-Unassigned_MappingQuality	0	0	0	0
-Unassigned_Chimera	0	0	0	0
-Unassigned_FragmentLength	0	0	0	0
-Unassigned_Duplicate	0	0	0	0
-Unassigned_MultiMapping	103939526	153545436	37634962	176511748
-Unassigned_Secondary	0	0	0	0
-Unassigned_NonSplit	0	0	0	0
-Unassigned_NoFeatures	884350	1227533	113140	291506
-Unassigned_Overlapping_Length	0	0	0	0
-Unassigned_Ambiguity	1503124	2204365	250523	692018
+Status	results/alignments/SRR31781631_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781632_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781633_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781635_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781636_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781640_Aligned.sortedByCoord.out.bam	results/alignments/SRR31781641_Aligned.sortedByCoord.out.bam
+Assigned	5611675	3225356	24944910	26814806	38914274	3918129	10749388
+Unassigned_Unmapped	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0
+Unassigned_MultiMapping	172068956	17397046	108459348	103939526	153545436	37634962	176511748
+Unassigned_Secondary	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0
+Unassigned_NoFeatures	28875	100990	602418	884350	1227533	113140	291506
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0
+Unassigned_Ambiguity	466360	176832	1241914	1503124	2204365	250523	692018

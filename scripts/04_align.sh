@@ -6,6 +6,8 @@ for fq1 in data/clean_fastq/*_1.trimmed.fastq.gz; do
   fq2="${fq1/_1.trimmed.fastq.gz/_2.trimmed.fastq.gz}"
   base=$(basename "$fq1" _1.trimmed.fastq.gz)
 
+  echo "⭐  Aligning $base"
+  echo "=============================="
   STAR \
     --genomeDir $GENOME_DIR \
     --readFilesIn "$fq1" "$fq2" \

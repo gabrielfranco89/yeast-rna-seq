@@ -10,9 +10,12 @@ set -e
 # Select only for for the same gene to just illustrata the pipeline
 
 SRR_LIST=(
+SRR31781631
+SRR31781632
+SRR31781633
 #  SRR31781635
-  SRR31781636
-#  SRR31781640
+  # SRR31781636
+ SRR31781640
   SRR31781641
 )
 
@@ -23,8 +26,16 @@ for SRR in "${SRR_LIST[@]}"; do
   # Download SRA file
   prefetch $SRR
 
-  # Convert to gzipped FASTQ
+  # Convert to FASTQ
   fasterq-dump $SRR --outdir data/raw_fastq --skip-technical  --threads 4
+  
+  # Compress
+  echo "Compressing $SRR"
+  gzip "data/raw_fastq/${SRR}_1.fastq"
+  gzip "data/raw_fastq/${SRR}_2.fastq"
+  
+  # ToDO: Remove SRA file (space is not infinite)  
 
   echo "✅ Done: $SRR"
+  echo "============================"
 done
